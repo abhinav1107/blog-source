@@ -1,0 +1,33 @@
+{{ partial "header.html" . }}
+
+<main id="main">
+	<div class="container">
+
+        <div class="row section featured topspace">
+            {{ range $i, $item := .Paginator.Pages }}
+                <h2 class="section-title">{{ .Title }}</h2>
+                <div class="row">
+                    {{ if eq (mod $i 2) 0 }}
+                        <div class="col-md-6 text-center">
+                            <img src="/project/img/{{ .Params.image }}" alt="{{ .Title }}">
+                        </div>
+                        <div class="col-md-6">
+                            <p class="text-left">{{ .Description }}</p>
+                        </div>
+                    {{ else }}
+                        <div class="col-md-6">
+                            <p class="text-right">{{ .Description }}</p>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <img src="/project/img/{{ .Params.image }}" alt="{{ .Title }}">
+                        </div>
+                    {{ end }}
+                </div>
+                <div class="topspace"></div>
+            {{ end }}
+        </div> <!-- / section -->
+
+	</div>	<!-- /container -->
+</main>
+
+{{ partial "footer.html" . }}

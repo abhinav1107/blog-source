@@ -1,0 +1,30 @@
+<div class="row section recentworks topspace">
+    <h2 class="section-title"><span>Recent Posts</span></h2>
+    <div class="thumbnails recentworks">
+        {{ range first 3 (where .Data.Pages "Section" "blog") }}
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <a class="thumbnail" href="{{ .Permalink }}">
+                    <span class="img">
+                        {{ if .Params.Image }}
+                            <img src="/blog/img/{{ .Params.image }}" alt="{{ .Title }}">
+                        {{ else }}
+                            {{ $filename := (printf "%s.jpg" .File.BaseFileName) }}
+                            {{ if (where (readDir "content/blog/img/") "Name" $filename) }}
+                                <img src="/blog/img/{{ .File.BaseFileName }}.jpg" alt="{{ .Title }}" />
+                            {{ end }}
+                        {{ end }}
+                        <span class="cover"><span class="more">Read... &rarr;</span></span>
+                    </span>
+                    <span class="title">{{ .Title }}</span>
+                    <span class="details">
+                        {{ if .Description }}
+                            {{ .Description }}
+                        {{ else }}
+                            {{ .Summary }}
+                        {{ end }}
+                    </span>
+                </a>
+            </div>
+        {{ end }}
+    </div> <!-- /section -->
+</div> <!-- / section -->

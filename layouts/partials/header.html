@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="{{ .Site.Params.Author }}">
+
+{{ if .IsHome }}
+    <meta name="description" content="{{ .Site.Params.Description }}">
+    <meta name="keywords" content="{{ .Site.Params.Keywords }}">
+	<title>{{ .Site.Title }}</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ .Site.Title }}">
+    <meta property="og:description" content="{{ .Site.Params.Description }}">
+    <meta property="og:image" content="{{ .Site.BaseURL }}img/me.jpg" >
+    <meta property="og:url" content="{{ .Site.BaseURL }}">
+
+    <meta property="twitter:title" content="{{ .Site.Title }}">
+    <meta property="twitter:description" content="{{ .Site.Params.Description }}">
+{{ else if .IsNode }}
+    <meta name="description" content="{{ .Site.Params.Description }}">
+    <meta name="keywords" content="{{ .Site.Params.Keywords }}">
+    <title>{{ .Page.Title }} :: {{ .Site.Title }}</title>
+
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="{{ .Page.Title }} :: {{ .Site.Title }}">
+    <meta property="og:description" content="{{ .Site.Params.Description }}">
+    <meta property="og:image" content="{{ .Site.BaseURL }}img/me.jpg" >
+    <meta property="og:url" content="{{ .Permalink }}">
+
+    <meta property="twitter:title" content="{{ .Page.Title }} :: {{ .Site.Title }}">
+    <meta property="twitter:description" content="{{ .Site.Params.Description }}">
+{{ else }}
+    <meta name="description" content="{{ if .Page.Description }}{{ .Page.Description }}{{ else }}{{ .Page.Summary }}{{ end }}">
+    <meta name="keywords" content="{{ .Page.Keywords }}">
+    <title>{{ .Page.Title }} :: {{ .Site.Title }}</title>
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ .Page.Title }} :: {{ .Site.Title }}">
+    <meta property="og:description" content="{{ if .Page.Description }}{{ .Page.Description }}{{ else }}{{ .Page.Summary }}{{ end }}">
+	{{ if .Params.Image }}
+	<div class="entry-image text-center">
+		<meta property="og:image" content="{{ .Permalink }}{{ .Page.Params.Image }}">
+	</div>
+	{{ else }}
+		{{ $filename := (printf "%s.jpg" .File.BaseFileName) }}
+		{{ if (where (readDir "content/blog/img/") "Name" $filename) }}
+		<meta property="og:image" content="{{ .Site.BaseURL }}blog/img/{{ .File.BaseFileName }}.jpg">
+		{{ end }}
+	{{ end }}
+	<meta property="og:url" content="{{ .Permalink }}">
+
+    <meta property="twitter:title" content="{{ .Page.Title }} :: {{ .Site.Title }}">
+    <meta property="twitter:description" content="{{ if .Page.Description }}{{ .Page.Description }}{{ else }}{{ .Page.Summary }}{{ end }}">
+{{ end }}
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+    <meta property="og:locale" content="{{ .Site.LanguageCode }}">
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@{{ .Site.Params.nickname }}" />
+    <meta name="twitter:creator" content="@{{ .Site.Params.nickname }}" />
+
+    <meta name="pinterest-rich-pin" content="true" />
+    <meta name="p:domain_verify" content="b10ceb2cf8ec497d87c2d480e7a61f09"/>
+
+	<link rel="shortcut icon" href="{{ .Site.BaseURL }}img/favicon.png">
+
+{{ if .RSSLink }}
+    <link href="{{ .RSSLink }}" rel="alternate feed" type="application/rss+xml" title="{{ .Site.Title }}" />
+{{ end }}
+
+{{ if or .Site.Params.debug (ne (printf "%v" $.Site.BaseURL) "http://localhost:1313/") }}
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spectral:500|Open+Sans:400,300,700|Reenie+Beanie">
+{{ else }}
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}vendor/css/bootstrap.no-icons.min.css">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}vendor/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}vendor/css/fonts-googleapis-com.css?family=Spectral:500|Open+Sans:400,300,700|Reenie+Beanie">
+{{ end}}
+    <!-- Code Highlight -->
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}vendor/highlight/styles/{{ .Site.Params.codestyle }}.css">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/styles.css">
+    <!-- Custom styles -->
+
+{{ if or .Site.Params.debug (ne (printf "%v" $.Site.BaseURL) "http://localhost:1313/") }}
+    {{ if .Site.Params.sharethis.custom }}
+    <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property={{ .Site.Params.sharethis.property }}&product=custom-share-buttons"></script>
+    {{ else }}
+    <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property={{ .Site.Params.sharethis.property }}&product=inline-share-buttons"></script>
+    {{ end }}
+{{ end}}
+
+</head>
+<body class="home">
+
+<header id="header">
+	<div id="head" class="parallax" parallax-speed="2">
+		<h1 id="logo" class="text-center">
+			<img class="img-circle" src="{{ .Site.BaseURL }}img/me.jpg" alt="">
+			<span class="title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></span>
+            <span class="tagline">
+	            <a href="{{ .Site.BaseURL }}index.xml" target="_blank" title="RSS Feed"><i class="fa fa-at"></i> {{ .Site.Params.nickname }} <i class="fa fa-rss fa-2"></i></a>
+            </span>
+            <span class="tagline">
+                {{ .Site.Params.subtitle }}
+            </span>
+		</h1>
+	</div>
+
+    {{ partial "menu.html" . }}
+</header>

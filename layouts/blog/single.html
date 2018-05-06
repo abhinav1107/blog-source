@@ -1,0 +1,127 @@
+{{ partial "header.html" . }}
+
+<article id="article">
+    <div class="container">
+
+        <div class="row topspace">
+            <div class="col-sm-8 col-sm-offset-2">
+
+                <article class="post">
+                    <header class="entry-header">
+                        <h1 class="entry-title"><a href="{{ .Permalink }}" rel="bookmark">{{ .Title }}</a></h1>
+                        <div class="entry-meta">
+                            <span class="posted-on">
+                                <time class="entry-date published" date="{{ .Date }}">{{ dateFormat .Site.Params.DateForm .Date }}</time>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                (~{{ .ReadingTime }} min)
+                            </span>
+                        </div>
+                    </header>
+                    {{ if .Params.Image }}
+                    <div class="entry-image text-center">
+                        <img src="{{ .Params.Image }}" alt="{{ .Title }}"/>
+                    </div>
+                    {{ else }}
+                        {{ $filename := (printf "%s.jpg" .File.BaseFileName) }}
+                        {{ if (where (readDir "content/blog/img/") "Name" $filename) }}
+                        <div class="entry-image text-center">
+                            <img src="../img/{{ .File.BaseFileName }}.jpg" alt="{{ .Title }}" />
+                        </div>
+                        {{ end }}
+                    {{ end }}
+                    <div class="entry-content">
+                        {{ .Content }}
+                    </div>
+
+                    <div class="entry-footer">
+                        <p align="right">
+                            <i>Por: &nbsp; <span class="signature">{{ .Site.Params.Author }}</span></i>
+                        </p>
+
+                        {{ if and .Params.Share .Params.Comments }}
+                        <p><i>
+                            If you liked the article <a href="#like">recommend it  <i class="fa fa-heart" aria-hidden="true"></i> </a>,
+                            <a href="#like">leave your comments <i class="fa fa-commenting" aria-hidden="true"></i> </a> below and/or
+                            <a href="#like">share it <i class="fa fa-share-alt" aria-hidden="true"></i> on social media</a>
+                        </i></p>
+                        {{ end }}
+
+                        <center>
+                            {{ range .Params.Categories }}
+                                <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">
+                                    <span class="label label-default">{{ . }}</span>
+                                </a>
+                            {{ end }}
+                        </center>
+                    </div>
+
+                    {{ $filename := (printf "%s-summary.jpg" .File.BaseFileName) }}
+                    {{ if (where (readDir "content/blog/img/") "Name" $filename) }}
+                    <div class="entry-content text-center">
+                        <img src="../img/{{ .File.BaseFileName }}-summary.jpg" alt="Summary {{ .Title }}" />
+                    </div>
+                    {{ end }}
+
+                </article><!-- #post-## -->
+
+            </div>
+
+        </div> <!-- /row post  -->
+
+        <div class="row" id="like">
+            <div class="col-sm-8 col-sm-offset-2">
+                {{ if .Params.Share }}
+                    {{ template "blog/sharethis.html" . }}
+                {{ end }}
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+
+                <div id="comments">
+                    {{ if .Params.Comments }}
+                       {{ template "blog/disqus.html" . }}
+                    {{ end }}
+                </div>
+            </div>
+        </div> <!-- /row comments -->
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-xs-6 col-sm-4 col-sm-offset-2">
+                {{ if .PrevInSection }}
+                    <ul class="pagination">
+                        <li>
+                            <a href="{{ .PrevInSection.Permalink }}" rel="prev" title="{{ .PrevInSection.Title }}" aria-label="Previous">
+                                <i class="fa fa-angle-double-left" aria-hidden="true"></i> <i>Previous article</i>
+                            </a>
+                        </li>
+                    </ul>
+                {{ end }}
+            </div>
+            <div class="col-xs-6 col-sm-4 text-right">
+                {{ if .NextInSection }}
+                    <ul class="pagination">
+                        <li>
+                            <a href="{{ .NextInSection.Permalink }}" rel="next" title="{{ .NextInSection.Title }}" aria-label="Next">
+                                <i>Next article</i> <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                {{ end }}
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+    </div>	<!-- /container -->
+</article>
+
+<!--
+<div id="adsense" style="display:none">
+    {{ template "blog/adsense.html" . }}
+</div>
+-->
+
+{{ partial "footer.html" . }}

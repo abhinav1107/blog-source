@@ -1,0 +1,29 @@
+<div class="row">
+    {{ if or .Site.Params.debug (ne (printf "%v" $.Site.BaseURL) "http://localhost:1313/") }}
+    <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+        {{ if .Site.Params.sharethis.custom }}
+            {{ range .Site.Params.social }}
+                {{ if .sharethis }}
+                    <div class="st-custom-button"
+                         data-network="{{ .network }}"
+                         data-url="{{ .Permalink }}"
+                         data-short-url="{{ .Permalink }}"
+                         data-title="{{ $.Page.Params.Title }} >>"
+                         data-image="{{ .Permalink }}{{ $.Page.Params.Image }}"
+                         data-description="{{ $.Page.Params.Description }}"
+                         data-username="{{ $.Site.Params.nickname }}"
+                         data-message="{{ $.Page.Params.Summary }}">
+                        <i class="fa {{ .icon }} fa-2x"></i>
+                    </div>
+                {{ end }}
+            {{ end }}
+            <div class="st-custom-button" data-network="sharethis" data-title="{{ $.Page.Params.Title }} >> ">
+                <i class="fa fa-share-alt-square fa-2x"></i>
+            </div>
+        {{ else }}
+            <div class="sharethis-inline-share-buttons"></div>
+            <br>
+        {{ end }}
+    </div>
+</div> <!-- /row of widgets -->
+{{ end }}

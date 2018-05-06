@@ -1,0 +1,45 @@
+{{ partial "header.html" . }}
+
+<main id="main">
+	<div class="container">
+
+		<div class="row topspace">
+			<div class="col-sm-8 col-sm-offset-2">
+
+                {{ range .Paginator.Pages }}
+                <article class="post">
+                    <header class="entry-header">
+                        <h1 class="entry-title"><a href="{{ .Permalink }}" rel="bookmark">{{ .Title }}</a></h1>
+                        <div class="entry-meta">
+                            <span class="posted-on">
+                                <time class="entry-date published" date="{{ .Date }}">{{ dateFormat .Site.Params.DateForm .Date }}</time>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                (~{{ .ReadingTime }} min)
+                            </span>
+                        </div>
+                    </header>
+                    <div class="entry-content">
+                        <div class="text-center">
+                            {{ .Description }}
+                        </div>
+                        <div class="text-right">
+                            <a href="{{ .Permalink }}" rel="bookmark">Read More...</a>
+                        </div>
+                    </div>
+                </article><!-- #post-## -->
+                <br>
+                {{ end }}
+
+            </div>
+		</div>
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                {{ template "_internal/pagination.html" . }}
+            </div>
+        </div>
+
+    </div>	<!-- /container -->
+</main>
+
+{{ partial "footer.html" . }}

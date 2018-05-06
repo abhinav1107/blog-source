@@ -1,0 +1,93 @@
+baseURL = "https://abhinav1107.github.io/"
+title = "Abhinav.Kumar"
+canonifyurls = true
+paginate = 5
+pluralizeListTitles = false
+
+[params]
+    dateForm = "02.01.2006"
+    subtitle = "My Quest To Exists. With Help from Gitpages"
+    description = "DevOps. Computer Geek. Biker. Hiker. Photography Enthusiast. And Sometimes Bathroom Singer"
+    keywords = "abhinav110 blog personal technology photography howto adventure trekking touring"
+    author = "Abhinav Kumar"
+    email = "abhinav1107@yahoo.co.in"
+    nickname = "abhinav1107"
+    skype = "abhinav1107"
+    year = 2018
+    codestyle = "github" #atom-one-dark
+    debug = false
+
+[params.disqus]
+    site = "abhinav1107-github-io.disqus.com"
+
+[params.sharethis]
+    property = "5aeb7dd4e12a39001287db41"
+    custom = false
+
+[params.google.analytics]
+    trackerID = "UA-118295005-1"
+
+[params.google.adsense]
+    account = "pub-*****************"
+    adslot = "**********"
+
+[[menu.main]]
+    name = "home"
+    url = "/"
+    weight = 1
+[[menu.main]]
+    name = "blog"
+    url = "/blog/"
+    weight = 5
+
+[params.subheader]
+    quote = "“The biggest adventure you can take is to live the life of your dreams”"
+    quoteAuthor = "Oprah Winfrey"
+
+[[params.social]]
+    title = "twitter"
+    url = "https://twitter.com/abhinav1107"
+    icon = "fa-twitter-square"
+    footer = true
+    sharethis = true
+    network = "twitter"
+[[params.social]]
+    title = "instagram"
+    url = "https://www.instagram.com/abhinav1107"
+    icon = "fa-instagram"
+    footer = true
+    sharethis = false
+    network = ""
+[[params.social]]
+    title = "medium"
+    url = "https://medium.com/@abhinav1107"
+    icon = "fa-medium"
+    footer = true
+    sharethis = false
+    network = ""
+[[params.social]]
+    title = "linkedin"
+    url = "https://www.linkedin.com/in/abhinav1107"
+    icon = "fa-linkedin-square"
+    footer = true
+    sharethis = true
+    network = "linkedin"
+[[params.social]]
+    title = "github"
+    url = "https://github.com/abhinav1107"
+    icon = "fa-github"
+    footer = true
+    sharethis = false
+    network = ""
+[[params.social]]
+    title = "feed"
+    url = "/index.xml"
+    icon = "fa-rss-square"
+    footer = true
+    sharethis = true
+    network = ""
+
+[taxonomies]
+    tag = "tags"
+    category = "categories"
+    series = "series"
