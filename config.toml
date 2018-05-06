@@ -6,7 +6,7 @@ pluralizeListTitles = false
 
 [params]
     dateForm = "02.01.2006"
-    subtitle = "My Quest To Exists. With Help from Gitpages"
+    subtitle = "My Quest To Exist. With Help from Gitpages"
     description = "DevOps. Computer Geek. Biker. Hiker. Photography Enthusiast. And Sometimes Bathroom Singer"
     keywords = "abhinav110 blog personal technology photography howto adventure trekking touring"
     author = "Abhinav Kumar"
