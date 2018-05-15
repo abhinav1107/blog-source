@@ -1,8 +1,11 @@
 baseURL = "https://abhinav1107.github.io/"
 title = "Abhinav.Kumar"
+languageCode = "en-us"
+copyright = "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License."
 canonifyurls = true
 paginate = 5
 pluralizeListTitles = false
+enableRobotsTXT = true
 
 [params]
     dateForm = "02.01.2006"
@@ -10,7 +13,6 @@ pluralizeListTitles = false
     description = "DevOps. Computer Geek. Biker. Hiker. Photography Enthusiast. And Sometimes Bathroom Singer"
     keywords = "abhinav110 blog personal technology photography howto adventure trekking touring"
     author = "Abhinav Kumar"
-    email = "abhinav1107@yahoo.co.in"
     nickname = "abhinav1107"
     skype = "abhinav1107"
     year = 2018
@@ -22,7 +24,7 @@ pluralizeListTitles = false
 
 [params.sharethis]
     property = "5aeb7dd4e12a39001287db41"
-    custom = false
+    custom = true
 
 [params.google.analytics]
     trackerID = "UA-118295005-1"
