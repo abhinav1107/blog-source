@@ -1,7 +1,7 @@
 +++
 type = "blog"
 title = "Auto update a Python package using Git repository"
-description = 'A "hackish" way to automatically self update a custom python package hosted using git repo'
+description = 'A "hackish" way to automatically / self update a custom python package hosted using git repo'
 date = "2018-05-20"
 tags = ["python", "package", "self-update"]
 categories = ["python", "python package"]
