@@ -16,7 +16,7 @@ TL;DR At my current work, I wanted to make my life easier by coming up with a wa
 
 To be able to achieve this, first thing I needed was to have a git repo which we can control exclusively. No one could commit directly to it's master branch. So, I created a separate Git repo with all Python code related files and locked it for direct master commits. Achieving this is very easy. Google it if you want to find out how to do that.
 
-Then I created a [`__init__py`](https://docs.python.org/3/tutorial/modules.html#packages) file under that repo. As described in reference link, the `__init__.py` is a special file and I would really encourage you to go ahead and read it if you want to understand how Python uses packages and modules. The code for `__init__.py` is this:
+Then I created a [`__init__.py`](https://docs.python.org/3/tutorial/modules.html#packages) file under that repo. As described in reference link, the `__init__.py` is a special file and I would really encourage you to go ahead and read it if you want to understand how Python uses packages and modules. The code for `__init__.py` is this:
 <script src="https://gist.github.com/abhinav1107/48938cc53bfb293a32846aaaa55230ab.js"></script>
 
 Let's demonstrate this with an example. Let's assume your Python package looks something like what's hosted at my [demo_supp](https://github.com/abhinav1107/demo_supp) (that's the best name I could come up with, so never mind)
