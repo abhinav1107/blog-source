@@ -37,5 +37,3 @@ In last few days, this ability to at least understand the code (irrespective of 
 The lesson from all this is nothing is easy and nothing is hard in this world. It's about how dedicated you are to achieve things. Don't lose faith in your self just because you have had some early set backs. Keep doing things. Start small and gradually build up the knowledge.
 
 Until next time.
-
-- [ ] fix grammar and spelling mistakes
